@@ -27,6 +27,8 @@ const int mqttPort = 8883;
 const char* mqtt_username = "mrhooman";
 const char* mqtt_password = "Password123";
 
+bool restoreModeFromPrefs = true;
+
 WiFiClientSecure espClient;
 
 PubSubClient mqtt(espClient);
@@ -76,7 +78,6 @@ TreeNode tree[] = {
 
 // ================= DECISION =================
 SystemMode evaluateTree() {
-  // BELUM ADA EMERGENCY SAMA SEKALI
   if (emergencyCount == 0) {
     return MODE_NORMAL;
   }
@@ -328,7 +329,12 @@ void aiTask(void*) {
       emergencyDuration = 0;
 
     SystemMode prev = currentMode;
-    currentMode = evaluateTree();
+
+    if (restoreModeFromPrefs) {
+      restoreModeFromPrefs = false;
+    } else {
+      currentMode = evaluateTree();
+    }
 
     if (prev != currentMode) {
       Serial.print("[MODE] Changed to ");
