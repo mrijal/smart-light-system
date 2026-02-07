@@ -1,0 +1,3 @@
+<h1>Smart Light System</h1>
+<h4>by Muhammad Rijal | 23552011138</h4>
+<p>Project ini merupakan sistem monitoring dan kontrol cerdas berbasis ESP32 yang mampu mendeteksi dan mengelola kondisi darurat secara real-time melalui tombol fisik, web dashboard, dan MQTT cloud. Sistem menggunakan multitasking FreeRTOS untuk memisahkan proses input, pengambilan keputusan, dan output agar tetap responsif dan stabil. Penentuan status sistem dilakukan dengan decision tree sederhana berdasarkan jumlah dan durasi kejadian darurat, lalu ditampilkan melalui indikator LED (PWM) serta dikirimkan ke dashboard web dan broker MQTT sebagai informasi status. Arsitektur ini dirancang ringan, efisien, dan mudah dikembangkan untuk kebutuhan IoT monitoring yang lebih kompleks.</p>
